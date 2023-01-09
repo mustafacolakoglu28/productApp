@@ -33,8 +33,8 @@ public class AccountDtoConverter {
                 .build();
     }
     public List<AccountDto> convertToAccountDtoList(List<Account> accounts){
-        if(accounts == null){
-            new NotFoundException("account not found");
+        if(accounts.isEmpty()){
+           throw new NotFoundException("account not found");
         }
         return accounts.stream().map(a->convert(a)).collect(Collectors.toList());
     }

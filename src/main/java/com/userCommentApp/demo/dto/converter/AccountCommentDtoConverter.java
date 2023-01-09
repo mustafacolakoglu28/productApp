@@ -5,7 +5,6 @@ import com.userCommentApp.demo.entity.Comment;
 import com.userCommentApp.demo.exception.NotFoundException;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,13 +13,14 @@ public class AccountCommentDtoConverter {
 
     public AccountCommentDto convert(Comment from){
         return AccountCommentDto.builder()
-                .comment(from.getText())
+                .text(from.getText())
+                .productId(from.getProductId())
                 .commentedDate(from.getCommentedDate())
                 .build();
     }
-    public List<AccountCommentDto> converToAccountComment(List<Comment> comments){
-        if(comments == null){
-            throw new NotFoundException("no comment yet");
+    public List<AccountCommentDto> converToAccountComment(List<Comment> comments,String name){
+        if(comments.isEmpty()){
+             throw new NotFoundException(name + " has no comment yet");
 
         }
         return comments.stream().map(this::convert).collect(Collectors.toList());

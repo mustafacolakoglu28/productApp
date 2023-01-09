@@ -20,14 +20,15 @@ public class GetAccountsResponse {
     private List<AccountCommentDto> comments;
 
     public static List<GetAccountsResponse> toResponse(List<AccountDto> accountDto){
-        return accountDto.stream().map(a->builder()
+        return accountDto.stream().map(a->GetAccountsResponse.builder()
                 .surname(a.getSurname())
                 .name(a.getName())
                 .phoneNumber(a.getPhoneNumber())
                 .id(a.getId())
                 .userName(a.getUserName())
                 .email(a.getEmail())
-                .comments(a.getComments()).build()).collect(Collectors.toList());
+                .comments(a.getComments())
+                .build()).collect(Collectors.toList());
     }
 
 

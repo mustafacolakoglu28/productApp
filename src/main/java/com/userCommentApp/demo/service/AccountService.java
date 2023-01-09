@@ -66,7 +66,7 @@ public class AccountService {
                 .findAccountByPhoneNumberAndUserName(request.getPhoneNumber(), request.getUserName());
         if (account == null) {
 
-             new NotFoundException("Phone number and username do not match any user");
+             throw new NotFoundException("Phone number and username do not match any user");
 
         }
         accountRepository.delete(account);
