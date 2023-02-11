@@ -26,6 +26,7 @@ public class AccountController {
 
     @PostMapping
     public ResponseEntity<AddAccountResponse> addAccount(@RequestBody AddAccountRequest request){
+        System.out.println(accountService.addAccount(request));
         return ResponseEntity.ok(AddAccountResponse.toResponse(accountService.addAccount(request)));
 
     }
@@ -34,6 +35,7 @@ public class AccountController {
     public ResponseEntity <List<GetAccountsResponse>> getAllAccounts(){
         return ResponseEntity.ok(GetAccountsResponse.toResponse(accountService.getAllAccounts()));
     }
+
 
 
     @GetMapping("findbyname")

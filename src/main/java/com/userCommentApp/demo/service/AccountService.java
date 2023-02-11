@@ -26,7 +26,7 @@ public class AccountService {
         this.accountRepository = accountRepository;
     }
 
-    protected Account findAccountById(String id){
+    public Account findAccountById(String id){
         return accountRepository.findById(id)
                 .orElseThrow(()-> new NotFoundException("Account not found"));
     }
@@ -40,6 +40,7 @@ public class AccountService {
         account.setPhoneNumber(request.getPhoneNumber());
 
         return accountDtoConverter.convert(accountRepository.save(account));
+
     }
 
     public List<AccountDto> getAllAccounts() {
@@ -64,6 +65,7 @@ public class AccountService {
     public AccountDto deleteAccountByPhoneNumberAndEmail(DeleteByEmailAndPhoneNumberRequest request) {
         Account account = accountRepository
                 .findAccountByPhoneNumberAndUserName(request.getPhoneNumber(), request.getUserName());
+
         if (account == null) {
 
              throw new NotFoundException("Phone number and username do not match any user");

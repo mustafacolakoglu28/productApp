@@ -2,6 +2,7 @@ package com.userCommentApp.demo.controller.request.account;
 
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
