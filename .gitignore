@@ -44,7 +44,7 @@ Thumbs.db
 
 # IDE files #
 #############
-.idea/
+.idea
 *.iml
 *.iws
 *.ipr
